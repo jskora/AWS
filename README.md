@@ -1,2 +1,2 @@
 # AWS
-AWS scripts 
+A place of random scripts I use for AWS
