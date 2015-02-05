@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 # Simple script to start an EMR cluster running Spark
 
