@@ -17,6 +17,7 @@ rm enron.avro
 
 # some utilities
 echo "pulling down some utilities (Thanks Markus!!!! Again!!!)"
+aws s3 cp s3://morris-datasets/ENRON/demo/log4j.properties .
 aws s3 cp s3://morris-datasets/ENRON/demo/mailrecord-utils-0.9.0-SNAPSHOT-shaded.jar .
 
 set SPARK_HOME=spark-1.2.1-hadoop2.4
