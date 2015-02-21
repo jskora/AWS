@@ -47,19 +47,14 @@ while aws emr describe-cluster --cluster-id ${EMR_CLUSTER_ID} | grep -q "BOOTSTR
   sleep 3
 done
 
-#echo "Starting Spark"
-#echo
-#echo
-#echo
-#echo "If you exit, you can access the cluster by doing an aws emr ssh --cluster-id ${EMR_CLUSTER_ID} --key-pair-file $keypair"
-#
-#echo
-#echo 
-#echo
-#sleep 3
-#
-#
-#while aws emr describe-cluster --cluster-id ${EMR_CLUSTER_ID} | grep -q "RUNNING"; do
-#  aws emr ssh --cluster-id ${EMR_CLUSTER_ID} --key-pair-file $keypair --command 'MASTER=yarn-client /home/hadoop/spark/bin/spark-shell'
-#break
-#done
+echo "Logging into your cluster"
+echo
+echo "If you get disconnected you can access it again with aws emr ssh --cluster-id ${EMR_CLUSTER_ID} --key-pair-file $keypair"
+
+sleep 2
+
+
+while aws emr describe-cluster --cluster-id ${EMR_CLUSTER_ID} | grep -q "RUNNING"; do
+  aws emr ssh --cluster-id ${EMR_CLUSTER_ID} --key-pair-file $keypair
+break
+done
