@@ -13,6 +13,7 @@ echo "pulling down the dataset"
 aws s3 cp s3://morris-datasets/ENRON/demo/enron.avro .
 echo "pushing it into hadoop"
 hadoop fs -put enron.avro .
+rm enron.avro
 
 # some utilities
 echo "pulling down some utilities (Thanks Markus!!!! Again!!!)"
