@@ -17,7 +17,7 @@ echo "pulling down some utilities (Thanks Markus!!!! Again!!!)"
 aws s3 cp s3://morris-datasets/ENRON/demo/log4j.properties .
 aws s3 cp s3://morris-datasets/ENRON/demo/mailrecord-utils-0.9.0-SNAPSHOT-shaded.jar .
 
-export SPARK_HOME=spark-1.2.1-hadoop2.4
+export SPARK_HOME=/home/hadoop/spark-1.2.1-hadoop2.4
 export PATH=$SPARK_HOME/bin:$PATH
 
 echo
