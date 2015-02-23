@@ -3,9 +3,7 @@ set -e
 
 # Simple script to start an EMR cluster running Spark
 
-
 AWS_CLI=`which aws`
-#KEYNAME=`whoami`SparkKey
 current_time=$(date "+%Y.%m.%d-%H.%M.%S")
 KEYNAME=Sparkey.$current_time
 
@@ -55,8 +53,7 @@ echo "If you get disconnected you can access it again with aws emr ssh --cluster
 
 sleep 2
 
-
 while aws emr describe-cluster --cluster-id ${EMR_CLUSTER_ID} | grep -q "RUNNING"; do
-  aws emr ssh --cluster-id ${EMR_CLUSTER_ID} --key-pair-file $keypair --command 'wget https://s3.amazonaws.com/morris-datasets/ENRON/demo/setup.sh && sh setup.sh'
+  aws emr ssh --cluster-id ${EMR_CLUSTER_ID} --key-pair-file $keypair --command 'wget https://raw.githubusercontent.com/notjasonmorris/AWS/master/EMR/setup.sh && sh setup.sh'
 break
 done
