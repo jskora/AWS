@@ -18,6 +18,8 @@ hadoop fs -put enron.avro enron.avro
 echo "pulling down some utilities (Thanks Markus!!!! Again!!!)"
 wget --quiet https://s3.amazonaws.com/morris-datasets/ENRON/demo/log4j.properties 
 wget --quiet https://s3.amazonaws.com/morris-datasets/ENRON/demo/mailrecord-utils-0.9.0-SNAPSHOT-shaded.jar 
+wget --quiet https://raw.githubusercontent.com/notjasonmorris/AWS/master/EMR/start-spark.sh
+
 
 # Hack to add variables 
 wget -P ~/ --quiet https://raw.githubusercontent.com/notjasonmorris/AWS/master/EMR/bashrc
@@ -27,7 +29,7 @@ export PATH=$SPARK_HOME/bin:$PATH
 
 echo
 echo
-echo "You are all set up.  Run "sh start-spark.sh" to get going.  Have Fun!"
+echo 'You are all set up.  Run "sh start-spark.sh" to get going.  Have Fun!'
 echo
 echo
 

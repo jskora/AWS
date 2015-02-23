@@ -47,6 +47,14 @@ while aws emr describe-cluster --cluster-id ${EMR_CLUSTER_ID} | grep -q "BOOTSTR
   sleep 3
 done
 
+echo "Setting up your cluster"
+echo
+echo
+
+while aws emr describe-cluster --cluster-id ${EMR_CLUSTER_ID} | grep -q "RUNNING"; do
+  aws emr ssh --cluster-id ${EMR_CLUSTER_ID} --key-pair-file $keypair --command 'wget https://raw.githubusercontent.com/notjasonmorris/AWS/master/EMR/setup.sh && sh setup.sh'
+done
+
 echo "Logging into your cluster"
 echo
 echo
@@ -55,8 +63,9 @@ echo
 echo
 
 sleep 2
-
 while aws emr describe-cluster --cluster-id ${EMR_CLUSTER_ID} | grep -q "RUNNING"; do
-  aws emr ssh --cluster-id ${EMR_CLUSTER_ID} --key-pair-file $keypair --command 'wget https://raw.githubusercontent.com/notjasonmorris/AWS/master/EMR/setup.sh && sh setup.sh'
+  aws emr ssh --cluster-id ${EMR_CLUSTER_ID} --key-pair-file $keypair
 break
 done
+
+
