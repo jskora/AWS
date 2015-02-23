@@ -12,7 +12,7 @@ sleep 2
 echo "pulling down the dataset"
 wget --quiet https://s3.amazonaws.com/morris-datasets/ENRON/demo/enron.avro 
 sleep 1
-hdfs dfs -put ~/enron.avro
+hadoop fs -put enron.avro enron.avro
 
 # some utilities
 echo "pulling down some utilities (Thanks Markus!!!! Again!!!)"
@@ -27,22 +27,28 @@ export PATH=$SPARK_HOME/bin:$PATH
 
 echo
 echo
-echo "Starting Spark with "
-echo "spark-shell --master yarn-client --driver-memory 4G --executor-memory 4G --num-executors 3 --executor-cores 2\ " | tee -a start-spark.sh
-echo "    --conf spark.serializer=org.apache.spark.serializer.KryoSerializer \ " | tee -a start-spark.sh
-echo "    --conf spark.kryo.registrator=com.uebercomputing.mailrecord.MailRecordRegistrator \ " | tee -a start-spark.sh
-echo "    --conf spark.kryoserializer.buffer.mb=128 \ " | tee -a start-spark.sh
-echo "    --conf spark.kryoserializer.buffer.max.mb=512 \ " | tee -a start-spark.sh
-echo "    --jars mailrecord-utils-0.9.0-SNAPSHOT-shaded.jar,./.versions/2.4.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.4.0.jar \ " | tee -a start-spark.sh
-echo "    --driver-java-options "-Dlog4j.configuration=log4j.properties" " | tee -a start-spark.sh
+echo "You are all set up.  Run "sh start-spark.sh" to get going.  Have Fun!"
 echo
 echo
-echo "Have fun!"
 
-spark-shell --master yarn-client --driver-memory 4G --executor-memory 4G --num-executors 3 --executor-cores 2\
-    --conf spark.serializer=org.apache.spark.serializer.KryoSerializer \
-    --conf spark.kryo.registrator=com.uebercomputing.mailrecord.MailRecordRegistrator \
-    --conf spark.kryoserializer.buffer.mb=128 \
-    --conf spark.kryoserializer.buffer.max.mb=512 \
-    --jars mailrecord-utils-0.9.0-SNAPSHOT-shaded.jar,.versions/2.4.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.4.0.jar\
-    --driver-java-options "-Dlog4j.configuration=log4j.properties"
+#echo
+#echo
+#echo "Starting Spark with "
+#echo "spark-shell --master yarn-client --driver-memory 4G --executor-memory 4G --num-executors 3 --executor-cores 2\ " | tee -a start-spark.sh
+#echo "    --conf spark.serializer=org.apache.spark.serializer.KryoSerializer \ " | tee -a start-spark.sh
+#echo "    --conf spark.kryo.registrator=com.uebercomputing.mailrecord.MailRecordRegistrator \ " | tee -a start-spark.sh
+#echo "    --conf spark.kryoserializer.buffer.mb=128 \ " | tee -a start-spark.sh
+#echo "    --conf spark.kryoserializer.buffer.max.mb=512 \ " | tee -a start-spark.sh
+#echo "    --jars mailrecord-utils-0.9.0-SNAPSHOT-shaded.jar,./.versions/2.4.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.4.0.jar \ " | tee -a start-spark.sh
+#echo "    --driver-java-options "-Dlog4j.configuration=log4j.properties" " | tee -a start-spark.sh
+#echo
+#echo
+#echo "Have fun!"
+#
+#spark-shell --master yarn-client --driver-memory 4G --executor-memory 4G --num-executors 3 --executor-cores 2\
+#    --conf spark.serializer=org.apache.spark.serializer.KryoSerializer \
+#    --conf spark.kryo.registrator=com.uebercomputing.mailrecord.MailRecordRegistrator \
+#    --conf spark.kryoserializer.buffer.mb=128 \
+#    --conf spark.kryoserializer.buffer.max.mb=512 \
+#    --jars mailrecord-utils-0.9.0-SNAPSHOT-shaded.jar,.versions/2.4.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.4.0.jar\
+#    --driver-java-options "-Dlog4j.configuration=log4j.properties"
