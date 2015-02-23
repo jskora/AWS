@@ -19,8 +19,6 @@ wget --quiet https://s3.amazonaws.com/morris-datasets/ENRON/demo/log4j.propertie
 wget --quiet https://s3.amazonaws.com/morris-datasets/ENRON/demo/mailrecord-utils-0.9.0-SNAPSHOT-shaded.jar 
 
 
-echo "export SPARK_HOME=/home/hadoop/spark-1.2.1-hadoop2.4" >> ~/.bashrc
-echo "export PATH=$SPARK_HOME/bin:$PATH" >> ~/.bashrc
 export SPARK_HOME=/home/hadoop/spark-1.2.1-hadoop2.4
 export PATH=$SPARK_HOME/bin:$PATH
 
