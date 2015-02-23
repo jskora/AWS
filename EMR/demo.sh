@@ -31,7 +31,7 @@ else
     echo "Unable to create SSH key"
 fi
 
-EMR_CLUSTER_JSON=$(aws emr create-cluster --name SparkCluster --ami-version 3.2 --instance-type m3.xlarge --instance-count 3   --ec2-attributes KeyName=$KEYNAME --applications Name=Hive   --bootstrap-actions Path=s3://support.elasticmapreduce/spark/install-spark)
+EMR_CLUSTER_JSON=$(aws emr create-cluster --name SparkCluster --ami-version 3.2 --instance-type m3.xlarge --instance-count 3   --ec2-attributes KeyName=$KEYNAME)
 
 export EMR_CLUSTER_ID=$(echo ${EMR_CLUSTER_JSON} | grep ClusterId | sed 's/.*\"\(.*\)\".*/\1/')
 
@@ -51,7 +51,7 @@ echo "Setting up your cluster"
 echo
 echo
 
-aws emr ssh --cluster-id ${EMR_CLUSTER_ID} --key-pair-file $keypair --command 'wget https://raw.githubusercontent.com/notjasonmorris/AWS/master/EMR/setup.sh && sh setup.sh'
+aws emr ssh --cluster-id ${EMR_CLUSTER_ID} --key-pair-file $keypair --command 'wget https://raw.githubusercontent.com/notjasonmorris/AWS/master/EMR/setup.sh'
 
 echo "Logging into your cluster"
 echo
@@ -61,9 +61,7 @@ echo
 echo
 
 sleep 2
-while aws emr describe-cluster --cluster-id ${EMR_CLUSTER_ID} | grep -q "RUNNING"; do
-  aws emr ssh --cluster-id ${EMR_CLUSTER_ID} --key-pair-file $keypair
-break
-done
+
+aws emr ssh --cluster-id ${EMR_CLUSTER_ID} --key-pair-file $keypair
 
 

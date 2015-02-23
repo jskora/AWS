@@ -12,7 +12,10 @@ sleep 2
 echo "pulling down the dataset"
 wget --quiet https://s3.amazonaws.com/morris-datasets/ENRON/demo/enron.avro 
 sleep 1
+hadoop fs -mkdir /user
+hadoop fs -mkdir /user/hadoop
 hadoop fs -put enron.avro enron.avro
+rm enron.avro
 
 # some utilities
 echo "pulling down some utilities (Thanks Markus!!!! Again!!!)"
