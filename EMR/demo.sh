@@ -51,9 +51,7 @@ echo "Setting up your cluster"
 echo
 echo
 
-while aws emr describe-cluster --cluster-id ${EMR_CLUSTER_ID} | grep -q "RUNNING"; do
-  aws emr ssh --cluster-id ${EMR_CLUSTER_ID} --key-pair-file $keypair --command 'wget https://raw.githubusercontent.com/notjasonmorris/AWS/master/EMR/setup.sh && sh setup.sh'
-done
+aws emr ssh --cluster-id ${EMR_CLUSTER_ID} --key-pair-file $keypair --command 'wget https://raw.githubusercontent.com/notjasonmorris/AWS/master/EMR/setup.sh && sh setup.sh'
 
 echo "Logging into your cluster"
 echo
