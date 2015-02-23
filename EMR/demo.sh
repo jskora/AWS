@@ -3,9 +3,9 @@ set -e
 
 # Simple script to start an EMR cluster running Spark
 
-
 AWS_CLI=`which aws`
-KEYNAME=`whoami`SparkKey
+current_time=$(date "+%Y.%m.%d-%H.%M.%S")
+KEYNAME=Sparkey.$current_time
 
 if [ $? -ne 0 ]; then
   echo "AWS CLI is not installed. Do a pip install awscli and try again; exiting"
@@ -49,12 +49,14 @@ done
 
 echo "Logging into your cluster"
 echo
-echo "If you get disconnected you can access it again with aws emr ssh --cluster-id ${EMR_CLUSTER_ID} --key-pair-file $keypair"
+echo
+echo "\033[1mIf you get disconnected you can access the instance again with aws emr ssh --cluster-id ${EMR_CLUSTER_ID} --key-pair-file $keypair\033[0m"
+echo
+echo
 
 sleep 2
 
-
 while aws emr describe-cluster --cluster-id ${EMR_CLUSTER_ID} | grep -q "RUNNING"; do
-  aws emr ssh --cluster-id ${EMR_CLUSTER_ID} --key-pair-file $keypair
+  aws emr ssh --cluster-id ${EMR_CLUSTER_ID} --key-pair-file $keypair --command 'wget https://raw.githubusercontent.com/notjasonmorris/AWS/master/EMR/setup.sh && sh setup.sh'
 break
 done
