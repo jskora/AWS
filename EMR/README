@@ -1,0 +1,6 @@
+Run the demo.sh script. The following will appear, fill out the interactive prompt with the info below:
+
+AWS Access Key ID []: <enter your access key here>
+AWS Secret Access Key []: <enter your secret key here> 
+Default region name []: us-east-1
+Default output format []:json
