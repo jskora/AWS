@@ -30,6 +30,7 @@ mv -f ~/bashrc ~/.bashrc
 export SPARK_HOME=/home/hadoop/spark-1.2.1-hadoop2.4
 export PATH=$SPARK_HOME/bin:$PATH
 source ~/.bashrc
+bash
 echo
 echo
 echo 'You are all set up.  Run "sh start-spark.sh" to get going.  Have Fun!'
