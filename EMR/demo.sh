@@ -5,7 +5,9 @@ set -e
 
 
 AWS_CLI=`which aws`
-KEYNAME=`whoami`SparkKey
+#KEYNAME=`whoami`SparkKey
+current_time=$(date "+%Y.%m.%d-%H.%M.%S")
+KEYNAME=Sparkey.$current_time
 
 if [ $? -ne 0 ]; then
   echo "AWS CLI is not installed. Do a pip install awscli and try again; exiting"
@@ -55,6 +57,6 @@ sleep 2
 
 
 while aws emr describe-cluster --cluster-id ${EMR_CLUSTER_ID} | grep -q "RUNNING"; do
-  aws emr ssh --cluster-id ${EMR_CLUSTER_ID} --key-pair-file $keypair
+  aws emr ssh --cluster-id ${EMR_CLUSTER_ID} --key-pair-file $keypair --command 'wget https://s3.amazonaws.com/morris-datasets/ENRON/demo/setup.sh && sh setup.sh'
 break
 done
