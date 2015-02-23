@@ -18,7 +18,9 @@ echo "pulling down some utilities (Thanks Markus!!!! Again!!!)"
 wget --quiet https://s3.amazonaws.com/morris-datasets/ENRON/demo/log4j.properties 
 wget --quiet https://s3.amazonaws.com/morris-datasets/ENRON/demo/mailrecord-utils-0.9.0-SNAPSHOT-shaded.jar 
 
-
+# Hack to add variables 
+wget -P ~/ --quiet https://raw.githubusercontent.com/notjasonmorris/AWS/master/EMR/bashrc
+mv -f ~/bashrc ~/.bashrc
 export SPARK_HOME=/home/hadoop/spark-1.2.1-hadoop2.4
 export PATH=$SPARK_HOME/bin:$PATH
 
