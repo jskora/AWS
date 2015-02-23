@@ -11,7 +11,8 @@ sleep 2
 # The dataset
 echo "pulling down the dataset"
 wget --quiet https://s3.amazonaws.com/morris-datasets/ENRON/demo/enron.avro 
-hdfs dfs -put enron.avro
+sleep1
+hdfs dfs -put ~/enron.avro
 
 # some utilities
 echo "pulling down some utilities (Thanks Markus!!!! Again!!!)"
