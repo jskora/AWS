@@ -49,7 +49,10 @@ done
 
 echo "Logging into your cluster"
 echo
-echo "If you get disconnected you can access it again with aws emr ssh --cluster-id ${EMR_CLUSTER_ID} --key-pair-file $keypair"
+echo
+echo "\033[1mIf you get disconnected you can access it again with aws emr ssh --cluster-id ${EMR_CLUSTER_ID} --key-pair-file $keypair\033[0m"
+echo
+echo
 
 sleep 2
 

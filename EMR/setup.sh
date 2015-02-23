@@ -4,18 +4,18 @@
 
 # A "fixed" version of Spark (Thanks Markus!!!!)
 echo "pulling down a patched version of Spark (Thanks Markus!!!!)"
-wget --quiet https://s3.amazonaws.com/morris-datasets/ENRON/demo/spark-1.2.1.tar.gz 2>&1 /dev/null
+wget --quiet https://s3.amazonaws.com/morris-datasets/ENRON/demo/spark-1.2.1.tar.gz 
 tar xf /home/hadoop/spark-1.2.1.tar.gz
 sleep 2
 
 # The dataset
 echo "pulling down the dataset"
-wget --quiet https://s3.amazonaws.com/morris-datasets/ENRON/demo/enron.avro 2>&1 /dev/null
+wget --quiet https://s3.amazonaws.com/morris-datasets/ENRON/demo/enron.avro 
 
 # some utilities
 echo "pulling down some utilities (Thanks Markus!!!! Again!!!)"
-wget --quiet https://s3.amazonaws.com/morris-datasets/ENRON/demo/log4j.properties 2>&1 /dev/null
-wget --quiet https://s3.amazonaws.com/morris-datasets/ENRON/demo/mailrecord-utils-0.9.0-SNAPSHOT-shaded.jar 2>&1 /dev/null
+wget --quiet https://s3.amazonaws.com/morris-datasets/ENRON/demo/log4j.properties 
+wget --quiet https://s3.amazonaws.com/morris-datasets/ENRON/demo/mailrecord-utils-0.9.0-SNAPSHOT-shaded.jar 
 
 
 export SPARK_HOME=/home/hadoop/spark-1.2.1-hadoop2.4
