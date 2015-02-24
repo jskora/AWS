@@ -9,13 +9,15 @@ tar xf /home/hadoop/spark-1.2.1.tar.gz
 sleep 2
 
 # The dataset
-echo "pulling down the dataset"
+echo "pulling down the Enron dataset"
 wget --quiet https://s3.amazonaws.com/morris-datasets/ENRON/demo/enron.avro 
 sleep 1
 hadoop fs -mkdir /user
 hadoop fs -mkdir /user/hadoop
 hadoop fs -put enron.avro enron.avro
 rm enron.avro
+echo "pulling down the Enron TFIDF matrix"
+hadoop fs -cp s3n://morris-datasets/ENRON/demo/TFIDF hdfs:///user/hadoop/TFIDF
 
 # some utilities
 echo "pulling down some utilities (Thanks Markus!!!! Again!!!)"
